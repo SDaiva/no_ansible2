@@ -1,0 +1,25 @@
+#- name: create folder
+ # ansible.builtin.file:
+  #  path: /home/ansible_git_clone2/
+   # owner: team2_user
+    #group: team2_user
+    #mode: '0777'
+    #state: directory
+
+#- name: "Clone a github repository"
+ # ansible.builtin.git:
+  #  repo: https://github.com/SDaiva/Final_assignment_Team2
+   # dest: /home/ansible_git_clone/gitclone
+
+- name: "Clone a github repository"
+  git:
+    repo: https://github.com/SDaiva/Final_assignment_Team2
+    dest: /home/ansible_git_clone2/
+    version: main
+#    clone: yes
+#    update: yes
+
+- name: remove visibility of credentials
+  command:
+    cmd: git remote set-url origin https://github.com/fabianlee/local-kvm-cloudimage.git
+    chdir: "/home"
